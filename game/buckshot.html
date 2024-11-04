@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Buckshot Roulette - Web</title>
+
+        <link rel="stylesheet" type="text/css" href="../css/output.css" />
+    </head>
+
+    <body class="bg-slate-900">
+        <span class="basis-8/12 hidden"></span>
+        <div class="flex flex-row text-white" style="width: 100vw;height: 100vh;">
+            <div id="pick-item-panel" class="absolute flex-col bg-black bg-opacity-80 w-full h-full items-center p-10 text-center uppercase gap-10" style="display: none;z-index: 999;">
+                <h1 class="text-6xl">Pick up items</h1>
+
+                <button id="get-item" class="text-4xl p-6 hover:text-gray-500">PICK</button>
+                <div id="item-recieve" class="flex-col" style="display: none;">
+                    <h3 class="text-3xl">You've gotten: [ITEM]<br><span class="text-2xl">Select the item slot:</span></h3>
+                    <div class="flex flex-row gap-5 mt-5 text-3xl">
+                        <button class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
+                        <button class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
+                        <button class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
+                        <button class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="table" class="flex flex-col basis-3/4 p-10 items-center justify-center text-center text-3xl gap-20 transition-all">
+                <div class="flex flex-col gap-5 h-full">
+                    <h1 class="mb-auto">DEALER</h1>
+                    <div class="grid grid-rows-2 grid-cols-2 gap-16">
+                        <button id="d-1" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300 cursor-not-allowed" disabled></button>
+                        <button id="d-2" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300 cursor-not-allowed" disabled></button>
+                        <button id="d-3" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300 cursor-not-allowed" disabled></button>
+                        <button id="d-4" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300 cursor-not-allowed" disabled></button>
+                    </div>
+                </div>
+
+                <div class="flex flex-row gap-16 w-full justify-center items-center">
+                    <hr class="w-full">
+                    <button class="py-2 px-4 hover:text-gray-500">SHOTGUN</button>
+                    <hr class="w-full">
+                </div>
+                
+                <div class="flex flex-col gap-5 h-full">
+                    <div class="grid grid-rows-2 grid-cols-2 gap-16">
+                        <button id="p-1" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300"></button>
+                        <button id="p-2" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300"></button>
+                        <button id="p-3" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300"></button>
+                        <button id="p-4" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300"></button>
+                    </div>
+                    <h1 id="player-name" class="mt-auto">PLAYER</h1>
+                </div>
+            </div>
+
+            <div class="flex flex-col basis-1/4 p-10 text-2xl text-center gap-10">
+                <table id="round-info" class="transition-all">
+                    <tr>
+                        <td colspan="3">Current round</td>
+                    </tr>
+                    <tr>
+                        <td>I</td>
+                        <td>II</td>
+                        <td>III</td>
+                    </tr>
+                    <tr>
+                        <td id="r-1">◉</td>
+                        <td id="r-2">○</td>
+                        <td id="r-3">○</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td>Dealer</td>
+                        <td id="player-name-2">Player</td>
+                    </tr>
+                    <tr class="text-center text-xl">
+                        <td id="dealer-hp">⚡⚡⚡⚡⚡⚡</td>
+                        <td id="player-hp">⚡⚡⚡⚡⚡⚡</td>
+                    </tr>
+                    <tr>
+                        <td id="curr-turn" colspan="2" class="text-left uppercase">Dealer's turn</td>
+                    </tr>
+                </table>
+
+                <div class="flex flex-col h-full gap-10">
+                    <div id="chat-log" class="border-4 border-black border-solid uppercase text-xl text-left py-4 px-2 text-lime-600 h-1/2 overflow-y-scroll">
+                        <p>[DEALER]: Careful, now...</p>
+                    </div>
+
+                    <div id="battle-log" class="border-4 border-black border-solid uppercase text-xl text-left py-4 px-2 text-gray-400 h-1/2 overflow-y-scroll">
+                        <p>Dealer used <span class="text-red-600">knife</span> and dealt 2 damage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/stats.js"></script>
+        <script src="js/game-state.js"></script>
+    </body>
+</html>
