@@ -1,4 +1,5 @@
 let Round = 0;
+let itemAmount;
 
 let roundPanel = document.getElementById("round-info");
 let r1 = document.getElementById("r-1");
@@ -9,6 +10,8 @@ let table = document.getElementById("table");
 
 let itemPanel = document.getElementById("pick-item-panel");
 let recieveItem = document.getElementById("item-recieve");
+
+let pickBtn = document.getElementById("get-item");
 
 function next_round() {
     Round++;
@@ -40,16 +43,31 @@ function next_round() {
             break;
     }
 
+    itemAmount = Math.floor(Math.random() * (5 - 1) + 1);
+    console.log(itemAmount);
+
     setTimeout(changeRPScale, 3000);
 }
 
 function display_itemPick() {
     itemPanel.style.display = "flex";
+
+    pickBtn.disabled = false;
+    pickBtn.classList.remove("cursor-not-allowed");
+}
+function hide_itemPick() {
+    itemPanel.style.display = "none";
 }
 
-document.getElementById("get-item").addEventListener("click", gambleItem); 
-function gambleItem() {
+
+pickBtn.addEventListener("click", openGambleResult); 
+function openGambleResult() {
     recieveItem.style.display = "flex";
+}
+function closeGambleResult() {
+    recieveItem.style.display = "none";
+    pickBtn.disabled = false;
+    pickBtn.classList.remove("cursor-not-allowed");
 }
 
 
