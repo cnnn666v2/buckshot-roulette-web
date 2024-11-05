@@ -23,7 +23,24 @@ function rollItem() {
 
     setItemTxt();
 
-    if(itemAmount > 0) {
+    let allFilled = true;
+    for (let i = 1; i <= 4; i++) {
+        if (PItems[i] === "" || PItems[i] === undefined) {
+            allFilled = false;
+            break;
+        }
+    }
+
+    if(allFilled) {
+        itemAmount = 0;
+        setTimeout(hide_itemPick, 1000);
+    
+        pickBtn.disabled = true;
+        pickBtn.classList.add("cursor-not-allowed");
+
+    } else if(itemAmount > 0) {
+        [i1, i2, i3, i4].forEach(disablePickupI);
+
         // Number represents an item: 1 - beer, 2 - ciggs, 3 - handcuffs, 4 - knife
         item = Math.floor(Math.random() * (5 - 1) + 1);
         console.log("Rolled item: " + item);
@@ -50,7 +67,7 @@ function rollItem() {
         rolledTxt.innerHTML = "You've gotten: " + itemTxt + '<br><span class="text-2xl">Select the item slot:</span>';
         console.log("Items to roll: " + itemAmount);
 
-        i1.addEventListener("click", setItemPlace, false);
+        i1.addEventListener("click", setItemPlace);
         i1.place = 1;
         i1.addItem = item;
 
@@ -72,18 +89,22 @@ function rollItem() {
 }
 
 function setItemPlace(evt) {
-    if(evt.currentTarget.place)
-
-    console.log("Place/Item: " + evt.currentTarget.place + "/" + evt.currentTarget.addItem)
-    PItems[evt.currentTarget.place] = evt.currentTarget.addItem;
-    console.log("Array: " + PItems[1] + " " + PItems[2] + " " + PItems[3] + " " + PItems[4])
-    closeGambleResult();
-
-    if(itemAmount == 0) {
-        setTimeout(hide_itemPick, 2000);
-
-        pickBtn.disabled = true;
-        pickBtn.classList.add("cursor-not-allowed");
+    if(PItems[evt.currentTarget.place] === undefined) {
+        console.log("Place/Item: " + evt.currentTarget.place + "/" + evt.currentTarget.addItem)
+        PItems[evt.currentTarget.place] = evt.currentTarget.addItem;
+        console.log("Array: " + PItems[1] + " " + PItems[2] + " " + PItems[3] + " " + PItems[4])
+        closeGambleResult();
+    
+        update_item_table();
+    
+        if(itemAmount == 0) {
+            setTimeout(hide_itemPick, 1200);
+    
+            pickBtn.disabled = true;
+            pickBtn.classList.add("cursor-not-allowed");
+        }
+    } else {
+        console.log("Error: " + PItems[evt.currentTarget.place]);
     }
 }
 
@@ -92,4 +113,21 @@ function setItemTxt() {
     i2.textContent = PItems[2];
     i3.textContent = PItems[3];
     i4.textContent = PItems[4];
+}
+
+// Merge these two into one function?
+/*function enableBtnTable(element) {
+    element.disabled = false;
+    element.classList.remove("cursor-not-allowed");
+}*/
+function disablePickupI(element) {
+    console.log("Element: " + element + " | " + element.textContent);
+
+    if (element.textContent !== "") {
+        element.disabled = true;
+        element.classList.add("cursor-not-allowed");
+    } else {
+        element.disabled = false;
+        element.classList.remove("cursor-not-allowed");
+    }
 }

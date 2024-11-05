@@ -10,11 +10,16 @@ let table = document.getElementById("table");
 
 let itemPanel = document.getElementById("pick-item-panel");
 let recieveItem = document.getElementById("item-recieve");
+let statsPanel = document.getElementById("stats-info");
 
 let pickBtn = document.getElementById("get-item");
+let currTurnTxt = document.getElementById("curr-turn");
 
 function next_round() {
     Round++;
+    currTurnTxt.textContent = "";
+
+    setTimeout(clear_table, 1000);
 
     table.classList.remove("basis-3/4");
     table.classList.add("basis-8/12");
@@ -47,6 +52,11 @@ function next_round() {
     console.log(itemAmount);
 
     setTimeout(changeRPScale, 3000);
+
+    DealerHP = 0;
+    PlayerHP = 0;
+
+    update_hp_txt();
 }
 
 function display_itemPick() {
@@ -57,6 +67,8 @@ function display_itemPick() {
 }
 function hide_itemPick() {
     itemPanel.style.display = "none";
+
+    setTimeout(changeHPScale, 1300);
 }
 
 
@@ -77,4 +89,18 @@ function changeRPScale() {
     table.classList.add("basis-3/4");
 
     setTimeout(display_itemPick, 2000);
+}
+
+function changeHPScale() {
+    statsPanel.style.scale = 1.8;
+    table.classList.remove("basis-3/4");
+    table.classList.add("basis-8/12");
+
+    setTimeout(set_hp, 1000);
+    setTimeout(reChangeHPScale, 2800);
+}
+function reChangeHPScale() {
+    statsPanel.style.scale = 1;
+    table.classList.remove("basis-8/12");
+    table.classList.add("basis-3/4");
 }
