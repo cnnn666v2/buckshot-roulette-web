@@ -16,11 +16,16 @@
                 <button id="get-item" class="text-4xl p-6 hover:text-gray-500">PICK</button>
                 <div id="item-recieve" class="flex-col" style="display: none;">
                     <h3 id="rolled-item" class="text-3xl">You've gotten: [ITEM]<br><span id="rolled-item-span" class="text-2xl">Select the item slot:</span></h3>
-                    <div class="flex flex-row gap-5 mt-5 text-3xl">
-                        <button id="i-1" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
-                        <button id="i-2" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
-                        <button id="i-3" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
-                        <button id="i-4" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
+                    <div class="flex flex-col gap-5 mt-5 text-3xl items-center">
+                        <div class="flex flex-row gap-5">
+                            <button id="i-1" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
+                            <button id="i-2" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
+                        </div>
+
+                        <div class="flex flex-row gap-5">
+                            <button id="i-3" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
+                            <button id="i-4" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300">[ITEM]</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -96,8 +101,19 @@
             </div>
         </div>
 
+        <!--
+        THE ORDER IS VERY IMPORTANT
+        SCRIPTS WITH A (logically thinking, "na chłopski rozum")
+        SHOULD BE ON TOP (like cosmetic-html which does changes to html elements)
+        MEANWHILE MORE IMPORTANT SCRIPTS (like the game-state which handles game logic)
+        SHOULD BE ALL THE WAY DOWN
+
+        VARIABLES.JS SHOULD ALWAYS BE ON TOP NO MATTER WHAT
+        -->
+        <script src="js/variables.js"></script>
+        <script src="js/cosmetic-html.js"></script>
         <script src="js/stats.js"></script>
-        <script src="js/game-state.js"></script>
         <script src="js/roll-item.js"></script>
+        <script src="js/game-state.js"></script>
     </body>
 </html>

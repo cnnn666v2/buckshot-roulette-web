@@ -1,12 +1,8 @@
-let rolledTxt = document.getElementById("rolled-item");
-
-pickBtn.addEventListener("click", rollItem); 
-let i1 = document.getElementById("i-1");
-let i2 = document.getElementById("i-2");
-let i3 = document.getElementById("i-3");
-let i4 = document.getElementById("i-4");
-
 var item;
+
+// Make the button open recieveItem and roll an item
+pickBtn.addEventListener("click", openGambleResult); 
+pickBtn.addEventListener("click", rollItem);
 
 function rollItem() {
     i1.removeEventListener("click", setItemPlace);
