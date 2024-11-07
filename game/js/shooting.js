@@ -62,4 +62,13 @@ function shoot(evt) {
     }
 
     console.log("Upated array:", LoadedShells.join(" "));
+    
+    // If the mag is empty load a new one
+    if(LoadedShells.length == 0) {
+        itemAmount = Math.floor(Math.random() * (5 - 1) + 1); // Max - 4, Min - 1
+        console.log("Item Amount: " + itemAmount);
+
+        doSetHP = false;
+        setTimeout(display_itemPick, 3600);
+    }
 }

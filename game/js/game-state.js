@@ -36,10 +36,10 @@ function next_round() {
             r3.textContent = "○";
             break;
     }
-
     itemAmount = Math.floor(Math.random() * (5 - 1) + 1); // Max - 4, Min - 1
     console.log(itemAmount);
 
+    doSetHP = true;
     setTimeout(changeRPScale, 3000);
 
     DealerHP = 0;
@@ -101,10 +101,28 @@ function pickupGun() {
 
 function changeTurn(skipEnemy) {
     if(TurnState == "Player") {
-        if(skipEnemy == true) { TurnState = "Player"; } else { TurnState = "Dealer"; }
+        if(skipEnemy == true) { 
+            TurnState = "Player";
+
+            // Enable butons on table for player
+            gunBtn.disabled = false;
+            gunBtn.classList.remove("cursor-not-allowed");
+            [p1, p2, p3, p4].forEach(enableBtnTable);
+        } else {
+            TurnState = "Dealer"; 
+        }
         console.log("(Changed turn state to: " + TurnState + " | skipEnemy? " + skipEnemy + ")");
     } else if(TurnState == "Dealer") {
-        if(skipEnemy == true) { TurnState = "Dealer"; } else { TurnState = "Player"; }
+        if(skipEnemy == true) {
+            TurnState = "Dealer";
+        } else { 
+            TurnState = "Player";
+            
+            // Enable butons on table for player
+            gunBtn.disabled = false;
+            gunBtn.classList.remove("cursor-not-allowed");
+            [p1, p2, p3, p4].forEach(enableBtnTable);
+        }
         console.log("(Changed turn state to: " + TurnState + " | skipEnemy? " + skipEnemy + ")");
     } else {
         console.log("Error occured! Unknown turn state: " + TurnState);

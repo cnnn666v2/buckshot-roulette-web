@@ -18,6 +18,8 @@ let TurnState; // It's either Player or Dealer, defines who's turn it currently 
 const LoadedShells = []; // Array which stores currently loaded shells
 let TotalLives = 0, TotalBlanks = 0; // Diferentiate lives and blanks in mag
 
+let doSetHP = false; // Variable wether to setHP or not
+
 // ====================== //
 // Asign HTML elements to
 // different variables

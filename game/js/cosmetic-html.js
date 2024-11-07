@@ -47,7 +47,7 @@ function changeHPScale() {
     table.classList.remove("basis-3/4");
     table.classList.add("basis-8/12");
 
-    setTimeout(set_hp, 1000);
+    if(doSetHP == true) { setTimeout(set_hp, 1000); }
     setTimeout(reChangeHPScale, 2800);
 }
 
