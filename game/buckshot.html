@@ -32,7 +32,8 @@
 
             <div id="table" class="flex flex-col basis-3/4 p-10 items-center justify-center text-center text-3xl gap-20 transition-all">
                 <div class="flex flex-col gap-5 h-full">
-                    <h1 class="mb-auto">DEALER</h1>
+                    <h1 class="mb-auto" id="dealer-name-t">DEALER</h1>
+                    <button class="mb-auto px-8 hover:text-gray-500 hidden" id="dealer-name-b">DEALER</button>
                     <div class="grid grid-rows-2 grid-cols-2 gap-16">
                         <button id="d-1" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300 cursor-not-allowed" disabled></button>
                         <button id="d-2" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300 cursor-not-allowed" disabled></button>
@@ -57,7 +58,8 @@
                         <button id="p-3" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300"></button>
                         <button id="p-4" class="h-24 w-24 border-2 border-solid border-white hover:border-gray-500 hover:text-gray-300"></button>
                     </div>
-                    <h1 id="player-name" class="mt-auto">PLAYER</h1>
+                    <h1 id="player-name-t" class="mt-auto">PLAYER</h1>
+                    <button class="mt-auto px-8 hover:text-gray-500 hidden" id="player-name-b" onclick="shoot('self')">YOU</button>
                 </div>
             </div>
 
@@ -116,6 +118,7 @@
         <script src="js/variables.js"></script>
         <script src="js/cosmetic-html.js"></script>
         <script src="js/stats.js"></script>
+        <script src="js/shooting.js"></script>
         <script src="js/roll-item.js"></script>
         <script src="js/game-state.js"></script>
     </body>

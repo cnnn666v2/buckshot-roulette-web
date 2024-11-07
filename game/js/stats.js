@@ -34,19 +34,6 @@ function update_item_table() {
     [p1, p2, p3, p4].forEach(disableBtnTable);
 }
 
-
-// Merge these two into one function?
-function enableBtnTable(element) {
-    element.disabled = false;
-    element.classList.remove("cursor-not-allowed");
-}
-function disableBtnTable(element) {
-    if (element.textContent === "") {
-        element.disabled = true;
-        element.classList.add("cursor-not-allowed");
-    }
-}
-
 function clear_table() {
     DItems.length = 0;
     PItems.length = 0;

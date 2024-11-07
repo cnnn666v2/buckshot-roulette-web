@@ -13,6 +13,8 @@ const PItems = [];
 let Round = 0;
 let itemAmount; // Amount of items to pickup during the pickup phase
 
+let TurnState; // It's either Player or Dealer, defines who's turn it currently is
+
 const LoadedShells = []; // Array which stores currently loaded shells
 let TotalLives = 0, TotalBlanks = 0; // Diferentiate lives and blanks in mag
 
@@ -22,6 +24,12 @@ let TotalLives = 0, TotalBlanks = 0; // Diferentiate lives and blanks in mag
 // D - stands for Dealer, P - stands for Player
 let DHP = document.getElementById("dealer-hp");
 let PHP = document.getElementById("player-hp");
+
+// N - stands for Name
+let NDealer = document.getElementById("dealer-name-t");
+let NPlayer = document.getElementById("player-name-t");
+let NDBtn = document.getElementById("dealer-name-b");
+let NPBtn = document.getElementById("player-name-b")
 
 let table = document.getElementById("table");
 let roundPanel = document.getElementById("round-info"); // Entire table for the current round info

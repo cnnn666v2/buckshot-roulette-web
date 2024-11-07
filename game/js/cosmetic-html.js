@@ -90,5 +90,37 @@ function hideLoadedShells() {
     // Hide shell info TXT
     ammoInfoTxt.textContent = "";
     ammoInfoTxt.classList.add("hidden");
+
+    // Enable table btns for player
+    [p1, p2, p3, p4].forEach(enableBtnTable);
 }
 //------------------------------------------------------------//
+// Merge these two into one function?
+function enableBtnTable(element) {
+    if(element.textContent != "") {
+        element.disabled = false;
+        element.classList.remove("cursor-not-allowed");
+    }
+}
+
+function disableBtnTable(element) {
+    //if (element.textContent === "") {
+        element.disabled = true;
+        element.classList.add("cursor-not-allowed");
+    //}
+}
+//------------------------------------------------------------//
+function switchTableNames() {
+    // Dealer
+    NDealer.classList.add("hidden");
+    NDBtn.classList.remove("hidden");
+
+    // Player
+    NPlayer.classList.add("hidden");
+    NPBtn.classList.remove("hidden");
+
+    // Buttons
+    gunBtn.disabled = true;
+    gunBtn.classList.add("cursor-not-allowed");
+    [p1, p2, p3, p4].forEach(disableBtnTable);
+}
