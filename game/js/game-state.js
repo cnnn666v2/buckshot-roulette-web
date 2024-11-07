@@ -1,4 +1,6 @@
 function next_round() {
+    if(Round == 0) { TurnState = "Player"; }
+
     // Disabe SHOTGUN button
     gunBtn.disabled = true;
     gunBtn.classList.add("cursor-not-allowed");
@@ -95,4 +97,18 @@ function load_magazine() {
 gunBtn.addEventListener("click", pickupGun);
 function pickupGun() {
     switchTableNames();
+}
+
+function changeTurn(skipEnemy) {
+    if(TurnState == "Player") {
+        if(skipEnemy == true) { TurnState = "Player"; } else { TurnState = "Dealer"; }
+        console.log("(Changed turn state to: " + TurnState + " | skipEnemy? " + skipEnemy + ")");
+    } else if(TurnState == "Dealer") {
+        if(skipEnemy == true) { TurnState = "Dealer"; } else { TurnState = "Player"; }
+        console.log("(Changed turn state to: " + TurnState + " | skipEnemy? " + skipEnemy + ")");
+    } else {
+        console.log("Error occured! Unknown turn state: " + TurnState);
+    }
+
+    currTurnTxt.textContent = "Current turn: " + TurnState;
 }

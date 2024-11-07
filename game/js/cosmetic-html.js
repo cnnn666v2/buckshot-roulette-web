@@ -51,13 +51,34 @@ function changeHPScale() {
     setTimeout(reChangeHPScale, 2800);
 }
 
-// Decrease the s  cale of HP Panel
+// Decrease the scale of HP Panel
 function reChangeHPScale() {
     statsPanel.style.scale = 1;
     table.classList.remove("basis-8/12");
     table.classList.add("basis-3/4");
 
+    currTurnTxt.textContent = "Current turn: " + TurnState;
+
     setTimeout(load_magazine, 1100);
+}
+
+// Change HP Scale but without setting up new hp
+function changeHPSN() {
+    statsPanel.style.scale = 1.8;
+    table.classList.remove("basis-3/4");
+    table.classList.add("basis-8/12");
+
+    setTimeout(update_hp_txt, 1000);
+    setTimeout(reCHPS, 2800);
+}
+
+// Decrease the scale of HP Panel but without loading new mag
+function reCHPS() {
+    statsPanel.style.scale = 1;
+    table.classList.remove("basis-8/12");
+    table.classList.add("basis-3/4");
+
+    currTurnTxt.textContent = "Current turn: " + TurnState;
 }
 //------------------------------------------------------------//
 function displayLoadedShells() {
@@ -123,4 +144,28 @@ function switchTableNames() {
     gunBtn.disabled = true;
     gunBtn.classList.add("cursor-not-allowed");
     [p1, p2, p3, p4].forEach(disableBtnTable);
+}
+
+function reverseTableNames() {
+    // Dealer
+    NDealer.classList.remove("hidden");
+    NDBtn.classList.add("hidden");
+
+    // Player
+    NPlayer.classList.remove("hidden");
+    NPBtn.classList.add("hidden");
+
+    // Buttons
+    gunBtn.disabled = false;
+    gunBtn.classList.remove("cursor-not-allowed");
+    [p1, p2, p3, p4].forEach(enableBtnTable);
+}
+//------------------------------------------------------------//
+function enableBtnsIf() { // Enable table buttons only if player shot blank at himself
+    // Enable table btns for player
+    [p1, p2, p3, p4].forEach(enableBtnTable);
+
+    // Enable SHOTGUN button
+    gunBtn.disabled = false;
+    gunBtn.classList.remove("cursor-not-allowed");
 }

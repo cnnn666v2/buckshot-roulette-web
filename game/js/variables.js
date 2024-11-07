@@ -19,7 +19,8 @@ const LoadedShells = []; // Array which stores currently loaded shells
 let TotalLives = 0, TotalBlanks = 0; // Diferentiate lives and blanks in mag
 
 // ====================== //
-// Asign HTML elements to different variables
+// Asign HTML elements to
+// different variables
 // ====================== //
 // D - stands for Dealer, P - stands for Player
 let DHP = document.getElementById("dealer-hp");
