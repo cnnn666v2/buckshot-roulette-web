@@ -160,6 +160,14 @@ function reverseTableNames() {
     gunBtn.classList.remove("cursor-not-allowed");
     [p1, p2, p3, p4].forEach(enableBtnTable);
 }
+
+function hideEntireTable() {
+    table.classList.add("opacity-0");
+}
+
+function showEntireTable() {
+    table.classList.remove("opacity-0");
+}
 //------------------------------------------------------------//
 function enableBtnsIf() { // Enable table buttons only if player shot blank at himself
     // Enable table btns for player

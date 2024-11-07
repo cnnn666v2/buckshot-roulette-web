@@ -21,7 +21,11 @@ function shoot(evt) {
                     console.log("It's a live round!!");
                     PlayerHP -= 1;
                     LoadedShells.shift();
-                    changeTurn();
+
+                    // Hide entire table effect
+                    setTimeout(hideEntireTable, 400);
+                    setTimeout(showEntireTable, 3000);
+                    setTimeout(changeTurn, 4000);
                 } else if(LoadedShells[0] == 0) {
                     console.log("It's a blank round!!");
                     LoadedShells.shift();
@@ -53,7 +57,7 @@ function shoot(evt) {
         }
 
         reverseTableNames(); // Enable table items again
-        changeHPSN(); // Increase scal of HP panel + update text
+        setTimeout(changeHPSN, 4000); // Increase scal of HP panel + update text
 
         // Disable butons on table for player
         gunBtn.disabled = true;
