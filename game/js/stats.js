@@ -1,10 +1,11 @@
 // Only for new round
 function set_hp() {
-    let i = Math.floor(Math.random() * 5) + 2;
-    console.log(i);
+    totalHP = 0;
+    totalHP = Math.floor(Math.random() * 5) + 2;
+    console.log("(Rolled health: " + totalHP + " )");
 
-    DealerHP = i;
-    PlayerHP = i;
+    DealerHP = totalHP;
+    PlayerHP = totalHP;
 
     update_hp_txt();
 }

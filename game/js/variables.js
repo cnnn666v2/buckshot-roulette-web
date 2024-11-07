@@ -2,6 +2,7 @@
 // Player/Dealer stats
 // ====================== //
 // D - stands for Dealer, P - stands for Player
+let totalHP;
 let DealerHP, PlayerHP;
 const DItems = [];
 const PItems = [];
@@ -11,6 +12,9 @@ const PItems = [];
 // ====================== //
 let Round = 0;
 let itemAmount; // Amount of items to pickup during the pickup phase
+
+const LoadedShells = []; // Array which stores currently loaded shells
+let TotalLives = 0, TotalBlanks = 0; // Diferentiate lives and blanks in mag
 
 // ====================== //
 // Asign HTML elements to different variables
@@ -28,6 +32,9 @@ let statsPanel = document.getElementById("stats-info"); // Table of dealer's and
 
 let pickBtn = document.getElementById("get-item"); // Button inside itemPanel meant for giving a random item to the player
 let currTurnTxt = document.getElementById("curr-turn");
+
+let gunBtn = document.getElementById("weapon-btn"); // Button to shoot yourself or dealer
+let ammoInfoTxt = document.getElementById("loaded-ammo"); // Text to display shell info in current "round-load"
 
 let p1, p2, p3, p4; // "p" is for the buttons on the player's side of table
 p1 = document.getElementById("p-1");

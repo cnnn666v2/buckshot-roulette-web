@@ -86,9 +86,9 @@ function rollItem() {
 
 function setItemPlace(evt) {
     if(PItems[evt.currentTarget.place] === undefined) {
-        console.log("Place/Item: " + evt.currentTarget.place + "/" + evt.currentTarget.addItem)
+        console.log("Place/Item: " + evt.currentTarget.place + "/" + evt.currentTarget.addItem);
         PItems[evt.currentTarget.place] = evt.currentTarget.addItem;
-        console.log("Array: " + PItems[1] + " " + PItems[2] + " " + PItems[3] + " " + PItems[4])
+        console.log("Array: " + PItems[1] + " " + PItems[2] + " " + PItems[3] + " " + PItems[4]);
         closeGambleResult();
     
         update_item_table();

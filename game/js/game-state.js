@@ -31,7 +31,7 @@ function next_round() {
             break;
     }
 
-    itemAmount = Math.floor(Math.random() * (5 - 1) + 1);
+    itemAmount = Math.floor(Math.random() * (5 - 1) + 1); // Max - 4, Min - 1
     console.log(itemAmount);
 
     setTimeout(changeRPScale, 3000);
@@ -40,4 +40,29 @@ function next_round() {
     PlayerHP = 0;
 
     update_hp_txt();
+}
+
+function load_magazine() {
+    console.log("=========");
+    console.log("Total HP: " + totalHP);
+    LoadedShells.length = 0; // clear the mag
+    let totalShells = Math.floor(Math.random() * ((totalHP + 1) - 2) + 2); // Max - 8, Min - 2
+    console.log("Total Shells: " + totalShells);
+
+    TotalLives = 0,
+    TotalBlanks = 0;
+
+    for(let i=1;i<=totalShells;i++) {
+        let shell = Math.floor(Math.floor(Math.random() * 2));
+        console.log("Loading shell... (" + shell + ") @ (" + i + ")");
+        LoadedShells.push(shell);
+
+        if(shell == 1) { TotalLives += 1; } else { TotalBlanks += 1; }
+    }
+
+    console.log("Array:", LoadedShells.join(" "));
+    console.log("Lives: " + TotalLives);
+    console.log("Blanks: " + TotalBlanks);
+
+    displayLoadedShells();
 }

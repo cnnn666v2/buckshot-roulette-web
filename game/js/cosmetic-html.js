@@ -56,5 +56,39 @@ function reChangeHPScale() {
     statsPanel.style.scale = 1;
     table.classList.remove("basis-8/12");
     table.classList.add("basis-3/4");
+
+    setTimeout(load_magazine, 1100);
+}
+//------------------------------------------------------------//
+function displayLoadedShells() {
+    // Disable SHOTGUN button
+    gunBtn.disabled = true;
+    gunBtn.classList.add("cursor-not-allowed");
+    gunBtn.style.scale = 0.6;
+
+    // Display shell info TXT and fill it with information
+    ammoInfoTxt.textContent = "";
+    ammoInfoTxt.classList.remove("hidden");
+    ammoInfoTxt.style.scale = 1.3;
+    
+    for(let i=0;i<TotalLives;i++) {
+        ammoInfoTxt.textContent += "1 ";
+    }
+    for(let i=0;i<TotalBlanks;i++) {
+        ammoInfoTxt.textContent +="0 ";
+    }
+
+    setTimeout(hideLoadedShells, 3000);
+}
+
+function hideLoadedShells() {
+    // Enable SHOTGUN button
+    gunBtn.disabled = false;
+    gunBtn.classList.remove("cursor-not-allowed");
+    gunBtn.style.scale = 1;
+
+    // Hide shell info TXT
+    ammoInfoTxt.textContent = "";
+    ammoInfoTxt.classList.add("hidden");
 }
 //------------------------------------------------------------//
