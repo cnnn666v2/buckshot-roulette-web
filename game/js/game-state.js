@@ -7,6 +7,7 @@ function next_round() {
 
     Round++;
     currTurnTxt.textContent = "";
+    ejectShellTxt.textContent = "";
 
     setTimeout(clear_table, 1000);
 
@@ -52,7 +53,17 @@ function load_magazine() {
     console.log("=========");
     console.log("Total HP: " + totalHP);
     LoadedShells.length = 0; // clear the mag
-    let totalShells = Math.floor(Math.random() * ((totalHP + 1) - 2) + 2); // Max - 8, Min - 2
+    let max = 0; // Max number of shells in mag
+
+    // Determine the max amount of shells inside mag
+    if(totalHP * 2 > 8) {
+        max = 8; // if totalHP*2 is greater than 8, then max shells should be 8
+    } else {
+        max = totalHP * 2; // or if 8 is greater than totalHP*2, then set it to totalHP*2
+    }
+
+    console.log("Max shells: " + max);
+    let totalShells = Math.floor(Math.random() * ((max + 1) - 2) + 2); // Max - 8, Min - 2
     console.log("Total Shells: " + totalShells);
 
     TotalLives = 0,
@@ -105,9 +116,9 @@ function changeTurn(skipEnemy) {
             TurnState = "Player";
 
             // Enable butons on table for player
-            gunBtn.disabled = false;
+            /*gunBtn.disabled = false;
             gunBtn.classList.remove("cursor-not-allowed");
-            [p1, p2, p3, p4].forEach(enableBtnTable);
+            [p1, p2, p3, p4].forEach(enableBtnTable);*/
         } else {
             TurnState = "Dealer"; 
         }
@@ -129,4 +140,5 @@ function changeTurn(skipEnemy) {
     }
 
     currTurnTxt.textContent = "Current turn: " + TurnState;
+    ejectShellTxt.textContent = "Ejected shell: " + currShell;
 }

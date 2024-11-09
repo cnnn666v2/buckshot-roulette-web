@@ -17,6 +17,7 @@ function hide_itemPick() {
     itemPanel.style.display = "none";
 
     setTimeout(changeHPScale, 1300);
+    closeGambleResult();
 }
 //------------------------------------------------------------//
 // Open panel with a result of a rolled item
@@ -167,6 +168,11 @@ function hideEntireTable() {
 
 function showEntireTable() {
     table.classList.remove("opacity-0");
+    DTable.classList.remove("opacity-0");
+}
+
+function hideDealerTable() {
+    DTable.classList.add("opacity-0");
 }
 //------------------------------------------------------------//
 function enableBtnsIf() { // Enable table buttons only if player shot blank at himself

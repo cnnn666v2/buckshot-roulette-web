@@ -3,6 +3,8 @@ NPBtn.kill = "Player";
 NDBtn.addEventListener("click", shoot);
 NDBtn.kill = "Dealer";
 
+let currShell; // Create current shell var storing current shell in chamber
+
 function shoot(evt) {
     TurnState = "Player";
     console.log("============");
@@ -10,6 +12,8 @@ function shoot(evt) {
     console.log("Kill target: " + evt.currentTarget.kill);
 
     console.log("Array:", LoadedShells.join(" "));
+
+    currShell = LoadedShells[0]; // Save locally current shell
 
     if(TurnState == "Player") {
         // Check who player wants to kill
@@ -23,14 +27,14 @@ function shoot(evt) {
                     LoadedShells.shift();
 
                     // Hide entire table effect
-                    setTimeout(hideEntireTable, 400);
-                    setTimeout(showEntireTable, 3000);
-                    setTimeout(changeTurn, 4000);
+                    setTimeout(hideEntireTable, 800);
+                    setTimeout(showEntireTable, 3400);
+                    setTimeout(changeTurn, 4400);
                 } else if(LoadedShells[0] == 0) {
                     console.log("It's a blank round!!");
                     LoadedShells.shift();
                     changeTurn(true); // Skip enemy turn if player shoots himself with a blank
-                    setTimeout(enableBtnsIf, 2800);
+                    setTimeout(enableBtnsIf, 4400);
                 } else {
                     console.log("Error occured! Unknown shell type: " + LoadedShells[0]);
                 }
@@ -43,7 +47,11 @@ function shoot(evt) {
                     console.log("It's a live round!!");
                     DealerHP -= 1;
                     LoadedShells.shift();
-                    changeTurn();
+
+                    // Hide dealer's table part
+                    setTimeout(hideDealerTable, 800);
+                    setTimeout(showEntireTable, 3400);
+                    setTimeout(changeTurn, 4400);
                 } else if(LoadedShells[0] == 0) {
                     console.log("It's a blank round!!");
                     LoadedShells.shift();
@@ -57,7 +65,14 @@ function shoot(evt) {
         }
 
         reverseTableNames(); // Enable table items again
-        setTimeout(changeHPSN, 4000); // Increase scal of HP panel + update text
+
+        // Check if either is dead
+        if( DealerHP <= 0 || PlayerHP <= 0) {
+            setTimeout(changeHPSN, 4000); // Increase scal of HP panel + update text
+            setTimeout(checkDeath, 8000);
+        } else {
+            setTimeout(changeHPSN, 4000); // Increase scal of HP panel + update text
+        }
 
         // Disable butons on table for player
         gunBtn.disabled = true;
@@ -73,6 +88,6 @@ function shoot(evt) {
         console.log("Item Amount: " + itemAmount);
 
         doSetHP = false;
-        setTimeout(display_itemPick, 3600);
+        setTimeout(display_itemPick, 7600);
     }
 }

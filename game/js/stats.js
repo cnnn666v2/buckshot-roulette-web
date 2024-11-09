@@ -40,3 +40,13 @@ function clear_table() {
 
     update_item_table();
 }
+
+function checkDeath() {
+    if(PlayerHP <= 0) {
+        setTimeout(next_round, 500);
+    }
+
+    if(DealerHP <= 0) {
+        setTimeout(next_round, 500);
+    }
+}

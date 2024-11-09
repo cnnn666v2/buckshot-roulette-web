@@ -34,6 +34,7 @@ let NPlayer = document.getElementById("player-name-t");
 let NDBtn = document.getElementById("dealer-name-b");
 let NPBtn = document.getElementById("player-name-b")
 
+let DTable = document.getElementById("dealer-table"); // Dealer's table
 let table = document.getElementById("table");
 let roundPanel = document.getElementById("round-info"); // Entire table for the current round info
 
@@ -43,6 +44,7 @@ let statsPanel = document.getElementById("stats-info"); // Table of dealer's and
 
 let pickBtn = document.getElementById("get-item"); // Button inside itemPanel meant for giving a random item to the player
 let currTurnTxt = document.getElementById("curr-turn");
+let ejectShellTxt = document.getElementById("shell-eject"); // Ejected shell TXT element
 
 let gunBtn = document.getElementById("weapon-btn"); // Button to shoot yourself or dealer
 let ammoInfoTxt = document.getElementById("loaded-ammo"); // Text to display shell info in current "round-load"
