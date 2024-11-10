@@ -23,7 +23,7 @@ function shoot(evt) {
                 // Check the shell type (1 - live, 0 - blank)
                 if(LoadedShells[0] == 1) {
                     console.log("It's a live round!!");
-                    PlayerHP -= 1;
+                    PlayerHP -= gunDamage;
                     LoadedShells.shift();
 
                     // Hide entire table effect
@@ -45,7 +45,7 @@ function shoot(evt) {
                 // Check the shell type (1 - live, 0 - blank)
                 if(LoadedShells[0] == 1) {
                     console.log("It's a live round!!");
-                    DealerHP -= 1;
+                    DealerHP -= gunDamage;
                     LoadedShells.shift();
 
                     // Hide dealer's table part

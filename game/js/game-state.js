@@ -4,6 +4,8 @@ function next_round() {
     // Disabe SHOTGUN button
     gunBtn.disabled = true;
     gunBtn.classList.add("cursor-not-allowed");
+    turnsLeft = 1;
+    gunDamage = 1;
 
     Round++;
     currTurnTxt.textContent = "";
@@ -111,6 +113,8 @@ function pickupGun() {
 }
 
 function changeTurn(skipEnemy) {
+    gunDamage = 1;
+
     if(TurnState == "Player") {
         if(skipEnemy == true) { 
             TurnState = "Player";
@@ -120,7 +124,12 @@ function changeTurn(skipEnemy) {
             gunBtn.classList.remove("cursor-not-allowed");
             [p1, p2, p3, p4].forEach(enableBtnTable);*/
         } else {
-            TurnState = "Dealer"; 
+            // Dont change turn if player has more than 1 try
+            if(turnsLeft <= 1) {
+                TurnState = "Dealer"; 
+            } else {
+                TurnState -= 1;
+            }
         }
         console.log("(Changed turn state to: " + TurnState + " | skipEnemy? " + skipEnemy + ")");
     } else if(TurnState == "Dealer") {
@@ -141,4 +150,30 @@ function changeTurn(skipEnemy) {
 
     currTurnTxt.textContent = "Current turn: " + TurnState;
     ejectShellTxt.textContent = "Ejected shell: " + currShell;
+}
+
+function use_items(item_use, button) {
+    console.log("========");
+    console.log("Item_use: " + item_use);
+    switch(item_use) {
+        case 1:
+            use_beer();
+            break;
+        case 2:
+            use_ciggs();
+            break;
+        case 3:
+            use_handcuffs();
+            break;
+        case 4:
+            use_knife();
+            break;
+        default:
+            console.log("Error occured: use_items() // item is: " + item_use);
+            break;
+    }
+
+    button.textContent = "";
+    button.disabled = true;
+    button.classList.add("cursor-not-allowed");
 }

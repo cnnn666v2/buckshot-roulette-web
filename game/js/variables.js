@@ -7,6 +7,9 @@ let DealerHP, PlayerHP;
 const DItems = [];
 const PItems = [];
 
+let gunDamage = 0; // Damage to deal when shooting someone
+let turnsLeft = 0; // Check how many turns a player has left
+
 // ====================== //
 // Game tracker
 // ====================== //
@@ -49,19 +52,19 @@ let ejectShellTxt = document.getElementById("shell-eject"); // Ejected shell TXT
 let gunBtn = document.getElementById("weapon-btn"); // Button to shoot yourself or dealer
 let ammoInfoTxt = document.getElementById("loaded-ammo"); // Text to display shell info in current "round-load"
 
-let p1, p2, p3, p4; // "p" is for the buttons on the player's side of table
-p1 = document.getElementById("p-1");
-p2 = document.getElementById("p-2");
-p3 = document.getElementById("p-3");
-p4 = document.getElementById("p-4");
+// "p" is for the buttons on the player's side of table
+let p1 = document.getElementById("p-1");
+let p2 = document.getElementById("p-2");
+let p3 = document.getElementById("p-3");
+let p4 = document.getElementById("p-4");
 
 let rolledTxt = document.getElementById("rolled-item");
 
-let i1, i2, i3, i4; // "i" is for the buttons during the pickup items phase
-i1 = document.getElementById("i-1");
-i2 = document.getElementById("i-2");
-i3 = document.getElementById("i-3");
-i4 = document.getElementById("i-4");
+// "i" is for the buttons during the pickup items phase
+let i1 = document.getElementById("i-1");
+let i2 = document.getElementById("i-2");
+let i3 = document.getElementById("i-3");
+let i4 = document.getElementById("i-4");
 
 // r1, r2, r3 are fields inside columns, they represent current round state
 let r1 = document.getElementById("r-1");

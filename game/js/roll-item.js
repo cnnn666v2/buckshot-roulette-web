@@ -82,6 +82,23 @@ function rollItem() {
         item = 0;
         itemAmount -= 1;
     }
+
+    // Array of button elements
+    const buttons = [p1, p2, p3, p4];
+
+    // Add event listeners to each button
+    buttons.forEach((button, index) => {
+        button.addEventListener("click", (event) => {
+            const parameter = PItems[index+1];
+
+            if (parameter) {
+                use_items(parameter, event.currentTarget);
+                PItems[index+1] = undefined;
+            } else {
+                console.log("Error occured: PItems @ " + index+1 + " => " + PItems[index+1] );
+            }
+        });
+    });
 }
 
 function setItemPlace(evt) {
