@@ -10,6 +10,7 @@ function use_ciggs() {
         if(PlayerHP < totalHP) {
             console.log("Current HP: " + PlayerHP);
             PlayerHP++;
+            setTimeout(changeHPSN, 1500);
             console.log("Updated HP: " + PlayerHP);
         } else {
             console.log("Added none HP, it's full! :D // HP: " + PlayerHP);

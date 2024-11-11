@@ -128,7 +128,8 @@ function changeTurn(skipEnemy) {
             if(turnsLeft <= 1) {
                 TurnState = "Dealer"; 
             } else {
-                TurnState -= 1;
+                TurnState = "Player";
+                turnsLeft -= 1;
             }
         }
         console.log("(Changed turn state to: " + TurnState + " | skipEnemy? " + skipEnemy + ")");
